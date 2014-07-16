@@ -76,6 +76,17 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'update_date',array('class'=>'col-sm-2 control-label')); ?>
+		<div class="col-sm-10">
+			<?php echo $form->textField($model,'update_date',
+								array(	'id'=>'update_date',
+										'class'=>'form-control',
+										'placeholder'=>'Enter update_date')); ?>
+		<?php echo $form->error($model,'update_date',array('class'=>'text-danger')); ?>
+		</div>
+	</div>
+
 	<div class="well text-center">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('class'=>'btn btn-color')); ?>
 	</div>

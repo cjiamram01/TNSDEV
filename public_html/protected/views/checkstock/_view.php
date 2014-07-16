@@ -1,6 +1,6 @@
 <?php
-/* @var $this ItemController */
-/* @var $data Item */
+/* @var $this CheckstockController */
+/* @var $data Checkstock */
 ?>
 
 <div class="col-sm-6">
@@ -14,20 +14,24 @@
 						'rel'=>'tooltip',
 						'data-toggle'=>'tooltip',
 		            	'data-placement'=>'top',
-		            	'data-original-title'=>'View')); ?></div><div class="panel-body">	<b><?php echo CHtml::encode($data->getAttributeLabel('item_code')); ?>:</b>
-	<?php echo CHtml::encode($data->item_code); ?>
+		            	'data-original-title'=>'View')); ?></div><div class="panel-body">	<b><?php echo CHtml::encode($data->getAttributeLabel('qty')); ?>:</b>
+	<?php echo CHtml::encode($data->qty); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('item_name')); ?>:</b>
-	<?php echo CHtml::encode($data->item_name); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('check_date')); ?>:</b>
+	<?php echo CHtml::encode($data->check_date); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('unit_id')); ?>:</b>
-	<?php echo CHtml::encode($data->unit_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('state')); ?>:</b>
+	<?php echo CHtml::encode($data->state); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('group_code')); ?>:</b>
-	<?php echo CHtml::encode($data->group_code); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('old_qty')); ?>:</b>
+	<?php echo CHtml::encode($data->old_qty); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('subitem_id')); ?>:</b>
+	<?php echo CHtml::encode($data->subitem_id); ?>
 	<br />
 
 </div>

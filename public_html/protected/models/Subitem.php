@@ -9,8 +9,10 @@
  * @property string $cost
  * @property integer $lot_order
  * @property string $qty
+ * @property string $update_date
  *
  * The followings are the available model relations:
+ * @property TblCheckstock[] $tblCheckstocks
  * @property TblItem $item
  */
 class Subitem extends CActiveRecord
@@ -36,9 +38,10 @@ class Subitem extends CActiveRecord
 			array('Item_id', 'length', 'max'=>20),
 			array('cost', 'length', 'max'=>45),
 			array('qty', 'length', 'max'=>18),
+			array('update_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, Item_id, cost, lot_order, qty', 'safe', 'on'=>'search'),
+			array('id, Item_id, cost, lot_order, qty, update_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,6 +53,7 @@ class Subitem extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'tblCheckstocks' => array(self::HAS_MANY, 'TblCheckstock', 'subitem_id'),
 			'item' => array(self::BELONGS_TO, 'TblItem', 'Item_id'),
 		);
 	}
@@ -65,6 +69,7 @@ class Subitem extends CActiveRecord
 			'cost' => Yii::t('app','Cost'),
 			'lot_order' => Yii::t('app','Lot Order'),
 			'qty' => Yii::t('app','Qty'),
+			'update_date' => Yii::t('app','Update Date'),
 		);
 	}
 
@@ -91,6 +96,7 @@ class Subitem extends CActiveRecord
 		$criteria->compare('cost',$this->cost,true);
 		$criteria->compare('lot_order',$this->lot_order);
 		$criteria->compare('qty',$this->qty,true);
+		$criteria->compare('update_date',$this->update_date,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

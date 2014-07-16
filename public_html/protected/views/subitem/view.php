@@ -29,6 +29,7 @@ $this->menu=array(
 		'cost',
 		'lot_order',
 		'qty',
+		'update_date',
 	),
 )); ?>
 </div>

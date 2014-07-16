@@ -1,15 +1,15 @@
 <?php
-/* @var $this SubitemController */
-/* @var $model Subitem */
+/* @var $this CheckstockController */
+/* @var $model Checkstock */
 
 $this->breadcrumbs=array(
-	'Subitems'=>array('index'),
+	'Checkstocks'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Subitem', 'url'=>array('index')),
-	array('label'=>'Create Subitem', 'url'=>array('create')),
+	array('label'=>'List Checkstock', 'url'=>array('index')),
+	array('label'=>'Create Checkstock', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#subitem-grid').yiiGridView('update', {
+	$('#checkstock-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 ?>
 <div class="container">
 
-<h2 class="headline first-child text-color"><span class="border-color">Manage Subitems</span></h2>
+<h2 class="headline first-child text-color"><span class="border-color">Manage Checkstocks</span></h2>
 
 
 <div class="panel panel-default">
@@ -47,7 +47,7 @@ $('.search-form form').submit(function(){
 </div>
 <div class="table-responsive">
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'subitem-grid',
+	'id'=>'checkstock-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'itemsCssClass' => 'table',
@@ -57,11 +57,11 @@ $('.search-form form').submit(function(){
 	'pager' => array('header'=>'','htmlOptions'=>array('class'=>'pagination',)),
 	'columns'=>array(
 		'id',
-		'Item_id',
-		'cost',
-		'lot_order',
 		'qty',
-		'update_date',
+		'check_date',
+		'state',
+		'old_qty',
+		'subitem_id',
 		array(
 			'class'=>'CButtonColumn',
 			'htmlOptions'=>array('style'=>'width:150px;'),

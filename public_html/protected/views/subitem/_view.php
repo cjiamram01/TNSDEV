@@ -30,6 +30,10 @@
 	<?php echo CHtml::encode($data->qty); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('update_date')); ?>:</b>
+	<?php echo CHtml::encode($data->update_date); ?>
+	<br />
+
 </div>
 </div>
 </div>

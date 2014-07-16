@@ -54,6 +54,17 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'group_code',array('class'=>'col-sm-2 control-label')); ?>
+		<div class="col-sm-10">
+			<?php echo $form->textField($model,'group_code',
+								array(	'id'=>'group_code',
+										'class'=>'form-control',
+										'placeholder'=>'Enter group_code')); ?>
+		<?php echo $form->error($model,'group_code',array('class'=>'text-danger')); ?>
+		</div>
+	</div>
+
 	<div class="well text-center">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('class'=>'btn btn-color')); ?>
 	</div>

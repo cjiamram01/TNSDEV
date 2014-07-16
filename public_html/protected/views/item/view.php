@@ -28,6 +28,7 @@ $this->menu=array(
 		'item_code',
 		'item_name',
 		'unit_id',
+		'group_code',
 	),
 )); ?>
 </div>

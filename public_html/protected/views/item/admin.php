@@ -60,6 +60,7 @@ $('.search-form form').submit(function(){
 		'item_code',
 		'item_name',
 		'unit_id',
+		'group_code',
 		array(
 			'class'=>'CButtonColumn',
 			'htmlOptions'=>array('style'=>'width:150px;'),
