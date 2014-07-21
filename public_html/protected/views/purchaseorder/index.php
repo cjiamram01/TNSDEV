@@ -1,19 +1,19 @@
 <?php
-/* @var $this GenreController */
+/* @var $this PurchaseorderController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Genres',
+	'Purchaseorders',
 );
 
 $this->menu=array(
-	array('label'=>'Create Genre', 'url'=>array('create')),
-	array('label'=>'Manage Genre', 'url'=>array('admin')),
+	array('label'=>'Create Purchaseorder', 'url'=>array('create')),
+	array('label'=>'Manage Purchaseorder', 'url'=>array('admin')),
 );
 ?>
 <div class="container">
 
-<h2 class="headline first-child text-color"><span class="border-color">Genres</span></h2>
+<h2 class="headline first-child text-color"><span class="border-color">Purchaseorders</span></h2>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

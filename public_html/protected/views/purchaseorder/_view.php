@@ -1,6 +1,6 @@
 <?php
-/* @var $this ProjectController */
-/* @var $data Project */
+/* @var $this PurchaseorderController */
+/* @var $data Purchaseorder */
 ?>
 
 <div class="col-sm-6">
@@ -14,24 +14,24 @@
 						'rel'=>'tooltip',
 						'data-toggle'=>'tooltip',
 		            	'data-placement'=>'top',
-		            	'data-original-title'=>'View')); ?></div><div class="panel-body">	<b><?php echo CHtml::encode($data->getAttributeLabel('projectname')); ?>:</b>
-	<?php echo CHtml::encode($data->projectname); ?>
+		            	'data-original-title'=>'View')); ?></div><div class="panel-body">	<b><?php echo CHtml::encode($data->getAttributeLabel('supplier_id')); ?>:</b>
+	<?php echo CHtml::encode($data->supplier_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('area')); ?>:</b>
-	<?php echo CHtml::encode($data->area); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('po_no')); ?>:</b>
+	<?php echo CHtml::encode($data->po_no); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
-	<?php echo CHtml::encode($data->description); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('order_date')); ?>:</b>
+	<?php echo CHtml::encode($data->order_date); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('customers_id')); ?>:</b>
-	<?php echo CHtml::encode($data->customers_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Status')); ?>:</b>
+	<?php echo CHtml::encode($data->Status); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('servicecharge')); ?>:</b>
-	<?php echo CHtml::encode($data->servicecharge); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Comment')); ?>:</b>
+	<?php echo CHtml::encode($data->Comment); ?>
 	<br />
 
 </div>

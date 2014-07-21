@@ -156,6 +156,99 @@ class ItemController extends Controller
 	public $dataTree;
 	public function actionTreeView()
 	 {
+		$dTree0=array();
+		$dTree1=array();
+		
+		
+		$Ms=new Itemgroup();
+		$crt0=new CDbCriteria();
+		$crt0->select="group_code,DESCRIPTION";
+		$crt0->condition="LEVEL=0";
+		$Ms=Itemgroup::model()->findAll($crt0);
+		$i=0;
+		foreach($Ms as $m){
+			$dTree1[$i]['text']=$m->DESCRIPTION;
+			//*************Add Level 2***************
+			$dTree2=array();
+			$crt1=new CDbCriteria();
+			$crt1->select="group_code,DESCRIPTION";
+			$crt1->condition="LEVEL=1 AND parent_code=:parent_code";
+			$crt1->params=array(':parent_code'=>$m->group_code);
+			$Ms1=Itemgroup::model()->findAll($crt1);
+			$i1=0;
+			foreach($Ms1 as $m1)
+			{
+					
+				$dTree2[$i1]['text']=$m->DESCRIPTION;
+
+					//**************Add Level 3****************
+
+						$crt2=new CDbCriteria();
+						$crt2->select="group_code,DESCRIPTION";
+						$crt2->condition="LEVEL=1 AND parent_code=:parent_code";
+						$crt2->params=array(':parent_code'=>$m1->group_code);
+						$Ms2=Itemgroup::model()->findAll($crt2);
+						$i2=0;
+						$dTree3=array();
+						foreach($Ms2 as $m2)
+						{
+							$dTree3[$i2]['text']=$m->DESCRIPTION;
+							$i2++;
+						}
+						$dTree2[$i1]['children']=$dTree3;
+					//**********************************
+
+				$i1++;
+			}
+
+			$dTree1[$i]['children']=$dTree2;//Add into children array into tree level 1
+			//**********************************************
+			$i++;
+        }
+		$dTree0['children']=$dTree1;
+        /*****************Modify function ctree view************/
+        /*$dTree=array();
+       
+       
+        
+        $criteria=new CDbCriteria();
+		$criteria->select="group_code,DESCRIPTION,LEVEL";
+
+        $Ms=Itemgroup::model()->findAll($criteria);
+		$i=0;
+		$i1=0;
+		$i2=0;
+		foreach($Ms as $m)
+		{
+			if($m->LEVEL=="1")
+			{
+				$i1=0;
+				$dTree1[$i]['text']=$m->DESCRIPTION;
+			}
+			else
+			if($m->LEVEL=="2")
+			{
+				$dTree2[$i1]['text']=$m->DESCRIPTION;
+				$i1++;
+			}
+			else
+			if($m->LEVEL=="3")
+			{
+				$dTree3[$i2]['text']=$m->DESCRIPTION;
+				$i2++;
+			}
+
+
+			$i++;
+
+		}*/
+
+
+
+
+        /******************************************************/
+
+        
 		$dataTree=array(
 		array(
 			'text'=>'Grampa', //must using 'text' key to show the text
@@ -181,8 +274,11 @@ class ItemController extends Controller
 			)
 		)
 	);
+	
 
-	$this->render('TreeView', array('dataTree'=>$dataTree));
+	
+	echo count($dataTree[0]);
+	//$this->render('TreeView', array('dataTree'=>$dataTree));
 	}
 
 
@@ -194,7 +290,7 @@ class ItemController extends Controller
      * Should receive parent node ID in $_GET['root'],
      *  with 'source' when there is no parent.
      */
-    public function actionAjaxFillTree()
+   /* public function actionAjaxFillTree()
     {
         // accept only AJAX request (comment this when debugging)
         if (!Yii::app()->request->isAjaxRequest) {
@@ -218,7 +314,7 @@ class ItemController extends Controller
             '"hasChildren":false',
             CTreeView::saveDataAsJson($children)
         );
-    }
+    }*/
 
 
 

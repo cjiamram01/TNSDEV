@@ -6,6 +6,8 @@
 
 
 
+
+
 	$this->widget('CTreeView',array(
         'data'=>$dataTree,
 	
@@ -16,5 +18,10 @@
                 'class'=>'treeview-red',//there are some classes that ready to use
         ),
 ));
+
+
+
+
+
 
 ?>

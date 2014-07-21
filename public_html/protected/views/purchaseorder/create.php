@@ -1,20 +1,20 @@
 <?php
-/* @var $this GenreController */
-/* @var $model Genre */
+/* @var $this PurchaseorderController */
+/* @var $model Purchaseorder */
 
 $this->breadcrumbs=array(
-	'Genres'=>array('index'),
+	'Purchaseorders'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Genre', 'url'=>array('index')),
-	array('label'=>'Manage Genre', 'url'=>array('admin')),
+	array('label'=>'List Purchaseorder', 'url'=>array('index')),
+	array('label'=>'Manage Purchaseorder', 'url'=>array('admin')),
 );
 ?>
 <div class="container">
 <div class="col-sm-10">
-		<h2 class="headline first-child text-color"><span class="border-color">Create Genre</span></h2>
+		<h2 class="headline first-child text-color"><span class="border-color">Create Purchaseorder</span></h2>
 	</div>
 	<div class="col-sm-2">
 
@@ -38,7 +38,7 @@ $this->menu=array(
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Genre</h4>
+        <h4 class="modal-title" id="myModalLabel">Purchaseorder</h4>
       </div>
       <div class="modal-body">
       	<?php $this->renderPartial('admin', array('model'=>$model)); ?>	

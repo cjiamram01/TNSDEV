@@ -1,19 +1,19 @@
 <?php
-/* @var $this ProjectController */
+/* @var $this PurchasedetailController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Projects',
+	'Purchasedetails',
 );
 
 $this->menu=array(
-	array('label'=>'Create Project', 'url'=>array('create')),
-	array('label'=>'Manage Project', 'url'=>array('admin')),
+	array('label'=>'Create Purchasedetail', 'url'=>array('create')),
+	array('label'=>'Manage Purchasedetail', 'url'=>array('admin')),
 );
 ?>
 <div class="container">
 
-<h2 class="headline first-child text-color"><span class="border-color">Projects</span></h2>
+<h2 class="headline first-child text-color"><span class="border-color">Purchasedetails</span></h2>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

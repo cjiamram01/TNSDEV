@@ -1,15 +1,15 @@
 <?php
-/* @var $this PropertyController */
-/* @var $model Property */
+/* @var $this PurchaseorderController */
+/* @var $model Purchaseorder */
 
 $this->breadcrumbs=array(
-	'Properties'=>array('index'),
+	'Purchaseorders'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Property', 'url'=>array('index')),
-	array('label'=>'Create Property', 'url'=>array('create')),
+	array('label'=>'List Purchaseorder', 'url'=>array('index')),
+	array('label'=>'Create Purchaseorder', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#property-grid').yiiGridView('update', {
+	$('#purchaseorder-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -27,12 +27,8 @@ $('.search-form form').submit(function(){
 ?>
 <div class="container">
 
-<h2 class="headline first-child text-color"><span class="border-color">Manage Properties</span></h2>
+<h2 class="headline first-child text-color"><span class="border-color">Manage Purchaseorders</span></h2>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -51,7 +47,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div>
 <div class="table-responsive">
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'property-grid',
+	'id'=>'purchaseorder-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'itemsCssClass' => 'table',
@@ -61,22 +57,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'pager' => array('header'=>'','htmlOptions'=>array('class'=>'pagination',)),
 	'columns'=>array(
 		'id',
-		'title',
-		'description',
-		'lat',
-		'lng',
-		'floor',
-		/*
-		'room',
-		'garage',
-		'restroom',
-		'area',
-		'project_provider',
-		'swiming_pool',
-		'residentailtype_id',
-		'Project_id',
-		'customers_id',
-		*/
+		'supplier_id',
+		'po_no',
+		'order_date',
+		'Status',
+		'Comment',
 		array(
 			'class'=>'CButtonColumn',
 			'htmlOptions'=>array('style'=>'width:150px;'),
