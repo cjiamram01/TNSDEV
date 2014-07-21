@@ -1,6 +1,6 @@
 <?php
-/* @var $this ItemController */
-/* @var $data Item */
+/* @var $this ItemgroupController */
+/* @var $data Itemgroup */
 ?>
 
 <div class="col-sm-6">
@@ -14,20 +14,16 @@
 						'rel'=>'tooltip',
 						'data-toggle'=>'tooltip',
 		            	'data-placement'=>'top',
-		            	'data-original-title'=>'View')); ?></div><div class="panel-body">	<b><?php echo CHtml::encode($data->getAttributeLabel('ITEM_CODE')); ?>:</b>
-	<?php echo CHtml::encode($data->ITEM_CODE); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ITEM_NAME')); ?>:</b>
-	<?php echo CHtml::encode($data->ITEM_NAME); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('group_code')); ?>:</b>
+		            	'data-original-title'=>'View')); ?></div><div class="panel-body">	<b><?php echo CHtml::encode($data->getAttributeLabel('group_code')); ?>:</b>
 	<?php echo CHtml::encode($data->group_code); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('dimension_code')); ?>:</b>
-	<?php echo CHtml::encode($data->dimension_code); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('DESCRIPTION')); ?>:</b>
+	<?php echo CHtml::encode($data->DESCRIPTION); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('parent_code')); ?>:</b>
+	<?php echo CHtml::encode($data->parent_code); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('LEVEL')); ?>:</b>

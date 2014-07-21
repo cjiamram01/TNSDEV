@@ -147,6 +147,81 @@ class ItemController extends Controller
 		));
 	}
 
+
+	/**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	
+	public $dataTree;
+	public function actionTreeView()
+	 {
+		$dataTree=array(
+		array(
+			'text'=>'Grampa', //must using 'text' key to show the text
+			'children'=>array(//using 'children' key to indicate there are children
+				array(
+					'text'=>'Father',
+					'children'=>array(
+						array('text'=>'me'),
+						array('text'=>'big sis'),
+						array('text'=>'little brother'),
+					)
+				),
+				array(
+					'text'=>'Uncle',
+					'children'=>array(
+						array('text'=>'Ben'),
+						array('text'=>'Sally'),
+					)
+				),
+				array(
+					'text'=>'Aunt',
+				)
+			)
+		)
+	);
+
+	$this->render('TreeView', array('dataTree'=>$dataTree));
+	}
+
+
+
+
+
+	/**
+     * Fills the JS tree on an AJAX request.
+     * Should receive parent node ID in $_GET['root'],
+     *  with 'source' when there is no parent.
+     */
+    public function actionAjaxFillTree()
+    {
+        // accept only AJAX request (comment this when debugging)
+        if (!Yii::app()->request->isAjaxRequest) {
+            exit();
+        }
+        // parse the user input
+        $parentId = "NULL";
+        if (isset($_GET['root']) && $_GET['root'] !== 'source') {
+            $parentId = $_GET['root'];
+        }
+        // read the data (this could be in a model)
+        $children = Yii::app()->db->createCommand(
+           "SELECT m1.group_code, m1.description AS TEXT, m2.id IS NOT NULL AS hasChildren" 
+            ."FROM tbl_itemgroup AS m1 LEFT JOIN tbl_itemgroup AS m2 ON m1.group_code=m2.parent_code" 
+            ."WHERE m1.parent_code <=> '170300' " 
+            ."GROUP BY m1.id ORDER BY m1.description ASC"
+
+        )->queryAll();
+        echo str_replace(
+            '"hasChildren":"0"',
+            '"hasChildren":false',
+            CTreeView::saveDataAsJson($children)
+        );
+    }
+
+
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

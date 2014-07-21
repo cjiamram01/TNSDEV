@@ -1,15 +1,15 @@
 <?php
-/* @var $this ItemController */
-/* @var $model Item */
+/* @var $this ItemgroupController */
+/* @var $model Itemgroup */
 
 $this->breadcrumbs=array(
-	'Items'=>array('index'),
+	'Itemgroups'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Item', 'url'=>array('index')),
-	array('label'=>'Create Item', 'url'=>array('create')),
+	array('label'=>'List Itemgroup', 'url'=>array('index')),
+	array('label'=>'Create Itemgroup', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#item-grid').yiiGridView('update', {
+	$('#itemgroup-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 ?>
 <div class="container">
 
-<h2 class="headline first-child text-color"><span class="border-color">Manage Items</span></h2>
+<h2 class="headline first-child text-color"><span class="border-color">Manage Itemgroups</span></h2>
 
 
 <div class="panel panel-default">
@@ -47,7 +47,7 @@ $('.search-form form').submit(function(){
 </div>
 <div class="table-responsive">
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'item-grid',
+	'id'=>'itemgroup-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'itemsCssClass' => 'table',
@@ -56,12 +56,11 @@ $('.search-form form').submit(function(){
 	'pagerCssClass'=>'text-center col-sm-12',
 	'pager' => array('header'=>'','htmlOptions'=>array('class'=>'pagination',)),
 	'columns'=>array(
-		'id',
-		'ITEM_CODE',
-		'ITEM_NAME',
 		'group_code',
-		'dimension_code',
+		'DESCRIPTION',
+		'parent_code',
 		'LEVEL',
+		'id',
 		array(
 			'class'=>'CButtonColumn',
 			'htmlOptions'=>array('style'=>'width:150px;'),

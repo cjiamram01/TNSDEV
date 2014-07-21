@@ -1,6 +1,6 @@
 <?php
 
-class GenreController extends Controller
+class ItemgroupController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -57,16 +57,16 @@ class GenreController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Genre;
+		$model=new Itemgroup;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Genre']))
+		if(isset($_POST['Itemgroup']))
 		{
-			$model->attributes=$_POST['Genre'];
+			$model->attributes=$_POST['Itemgroup'];
 			if($model->save())
-				$this->redirect(array('update','id'=>$model->GenreId));
+				$this->redirect(array('update','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -86,19 +86,19 @@ class GenreController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Genre']))
+		if(isset($_POST['Itemgroup']))
 		{
-			$model->attributes=$_POST['Genre'];
+			$model->attributes=$_POST['Itemgroup'];
 			if($model->save()){
 				Yii::app()->user->setFlash('response','');
-				$this->redirect(array('update','id'=>$model->GenreId));
+				$this->redirect(array('update','id'=>$model->id));
 			}	
 		}
 
-		$lists=new Genre('search');
+		$lists=new Itemgroup('search');
 		$lists->unsetAttributes();  // clear any default values
-		if(isset($_GET['Genre']))
-			$lists->attributes=$_GET['Genre'];
+		if(isset($_GET['Itemgroup']))
+			$lists->attributes=$_GET['Itemgroup'];
 
 		$this->render('update',array(
 			'model'=>$model,
@@ -126,27 +126,9 @@ class GenreController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Genre');
+		$dataProvider=new CActiveDataProvider('Itemgroup');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	public function actionListGenre()
-	{
-		$id= Yii::app()->getRequest()->getQuery('id'); 
-		if($id!="")
-		{
-			$model=$this->loadModel($id);
-			
-		}
-		$model=new Genre('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Genre']))
-			$model->attributes=$_GET['Genre'];
-
-		$this->render('listGenre',array(
-			'model'=>$model,
 		));
 	}
 
@@ -155,10 +137,10 @@ class GenreController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Genre('search');
+		$model=new Itemgroup('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Genre']))
-			$model->attributes=$_GET['Genre'];
+		if(isset($_GET['Itemgroup']))
+			$model->attributes=$_GET['Itemgroup'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -169,12 +151,12 @@ class GenreController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Genre the loaded model
+	 * @return Itemgroup the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Genre::model()->findByPk($id);
+		$model=Itemgroup::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -182,11 +164,11 @@ class GenreController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Genre $model the model to be validated
+	 * @param Itemgroup $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='genre-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='itemgroup-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

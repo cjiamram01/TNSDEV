@@ -25,10 +25,11 @@ $this->menu=array(
 	'htmlOptions'=>array('class'=>'table table-hover table-condensed'),
 	'attributes'=>array(
 		'id',
-		'item_code',
-		'item_name',
-		'unit_id',
+		'ITEM_CODE',
+		'ITEM_NAME',
 		'group_code',
+		'dimension_code',
+		'LEVEL',
 	),
 )); ?>
 </div>

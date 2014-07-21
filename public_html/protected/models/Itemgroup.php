@@ -1,29 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "tbl_item".
+ * This is the model class for table "tbl_itemgroup".
  *
- * The followings are the available columns in table 'tbl_item':
- * @property string $id
- * @property string $ITEM_CODE
- * @property string $ITEM_NAME
+ * The followings are the available columns in table 'tbl_itemgroup':
  * @property string $group_code
- * @property string $dimension_code
+ * @property string $DESCRIPTION
+ * @property string $parent_code
  * @property integer $LEVEL
- *
- * The followings are the available model relations:
- * @property TblPurchasedetail[] $tblPurchasedetails
- * @property TblReceivetransaction[] $tblReceivetransactions
- * @property TblSubitem[] $tblSubitems
+ * @property string $id
  */
-class Item extends CActiveRecord
+class Itemgroup extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tbl_item';
+		return 'tbl_itemgroup';
 	}
 
 	/**
@@ -34,14 +28,12 @@ class Item extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('group_code', 'required'),
 			array('LEVEL', 'numerical', 'integerOnly'=>true),
-			array('group_code', 'length', 'max'=>45),
-			array('dimension_code', 'length', 'max'=>20),
-			array('ITEM_CODE, ITEM_NAME', 'safe'),
+			array('group_code, parent_code', 'length', 'max'=>20),
+			array('DESCRIPTION', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, ITEM_CODE, ITEM_NAME, group_code, dimension_code, LEVEL', 'safe', 'on'=>'search'),
+			array('group_code, DESCRIPTION, parent_code, LEVEL, id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,9 +45,6 @@ class Item extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tblPurchasedetails' => array(self::HAS_MANY, 'TblPurchasedetail', 'Item_id'),
-			'tblReceivetransactions' => array(self::HAS_MANY, 'TblReceivetransaction', 'Item_id'),
-			'tblSubitems' => array(self::HAS_MANY, 'TblSubitem', 'Item_id'),
 		);
 	}
 
@@ -65,12 +54,11 @@ class Item extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('app','ID'),
-			'ITEM_CODE' => Yii::t('app','Item Code'),
-			'ITEM_NAME' => Yii::t('app','Item Name'),
 			'group_code' => Yii::t('app','Group Code'),
-			'dimension_code' => Yii::t('app','Dimension Code'),
+			'DESCRIPTION' => Yii::t('app','Description'),
+			'parent_code' => Yii::t('app','Parent Code'),
 			'LEVEL' => Yii::t('app','Level'),
+			'id' => Yii::t('app','ID'),
 		);
 	}
 
@@ -92,12 +80,11 @@ class Item extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('ITEM_CODE',$this->ITEM_CODE,true);
-		$criteria->compare('ITEM_NAME',$this->ITEM_NAME,true);
 		$criteria->compare('group_code',$this->group_code,true);
-		$criteria->compare('dimension_code',$this->dimension_code,true);
+		$criteria->compare('DESCRIPTION',$this->DESCRIPTION,true);
+		$criteria->compare('parent_code',$this->parent_code,true);
 		$criteria->compare('LEVEL',$this->LEVEL);
+		$criteria->compare('id',$this->id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -108,7 +95,7 @@ class Item extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Item the static model class
+	 * @return Itemgroup the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
